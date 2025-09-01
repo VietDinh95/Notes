@@ -1,0 +1,104 @@
+{
+  "source": "/Users/vietdh3.avi/Desktop/Notes/Notes/Views/NotesListView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Notes",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 23
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete Note",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 38
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Are you sure you want to delete this note? This action cannot be undone.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "Search notes...",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading notes...",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Notes Yet",
+        "location": {
+          "startingColumn": 49,
+          "startingLine": 123
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Results Found",
+        "location": {
+          "startingColumn": 66,
+          "startingLine": 123
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tap the + button to create your first note",
+        "location": {
+          "startingColumn": 49,
+          "startingLine": 128
+        }
+      },
+      {
+        "comment": "",
+        "key": "Try adjusting your search terms",
+        "location": {
+          "startingColumn": 96,
+          "startingLine": 128
+        }
+      },
+      {
+        "comment": "",
+        "key": "Create Note",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 138
+        }
+      }
+    ]
+  },
+  "version": 1
+}

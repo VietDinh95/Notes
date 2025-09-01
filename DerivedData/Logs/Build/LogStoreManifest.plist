@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>11</integer>
+	<key>logs</key>
+	<dict>
+		<key>819518A4-6CB4-42EA-A658-03F5F3D248CE</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>819518A4-6CB4-42EA-A658-03F5F3D248CE.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Notes project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Notes</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Testing project Notes with scheme Notes</string>
+			<key>timeStartedRecording</key>
+			<real>778316585.57610095</real>
+			<key>timeStoppedRecording</key>
+			<real>778316590.97766495</real>
+			<key>title</key>
+			<string>Testing project Notes with scheme Notes</string>
+			<key>uniqueIdentifier</key>
+			<string>819518A4-6CB4-42EA-A658-03F5F3D248CE</string>
+		</dict>
+		<key>847B70C5-678B-4D45-BDBB-B753E4FE7FD4</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>847B70C5-678B-4D45-BDBB-B753E4FE7FD4.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Notes project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Notes</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Testing project Notes with scheme Notes</string>
+			<key>timeStartedRecording</key>
+			<real>778316082.13224304</real>
+			<key>timeStoppedRecording</key>
+			<real>778316104.07478499</real>
+			<key>title</key>
+			<string>Testing project Notes with scheme Notes</string>
+			<key>uniqueIdentifier</key>
+			<string>847B70C5-678B-4D45-BDBB-B753E4FE7FD4</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

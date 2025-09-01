@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8ED14AB42E654EF400F6A998 /* NotesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED14AB32E654EF400F6A998 /* NotesKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		8EA727992E64255A00589A58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED14AB42E654EF400F6A998 /* NotesKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 				8EA7278A2E64255800589A58 /* Notes */,
 				8EA7279B2E64255A00589A58 /* NotesTests */,
 				8EA727A52E64255A00589A58 /* NotesUITests */,
+				8ED14AB22E654EF400F6A998 /* Frameworks */,
 				8EA727892E64255800589A58 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +96,13 @@
 				8EA727A22E64255A00589A58 /* NotesUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8ED14AB22E654EF400F6A998 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +125,7 @@
 			);
 			name = Notes;
 			packageProductDependencies = (
+				8ED14AB32E654EF400F6A998 /* NotesKit */,
 			);
 			productName = Notes;
 			productReference = 8EA727882E64255800589A58 /* Notes.app */;
@@ -195,6 +209,9 @@
 			);
 			mainGroup = 8EA7277F2E64255800589A58;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8ED14AB12E654DD800F6A998 /* XCLocalSwiftPackageReference "NotesKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8EA727892E64255800589A58 /* Products */;
 			projectDirPath = "";
@@ -558,6 +575,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		8ED14AB12E654DD800F6A998 /* XCLocalSwiftPackageReference "NotesKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = NotesKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8ED14AB32E654EF400F6A998 /* NotesKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8ED14AB12E654DD800F6A998 /* XCLocalSwiftPackageReference "NotesKit" */;
+			productName = NotesKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8EA727802E64255800589A58 /* Project object */;
 }

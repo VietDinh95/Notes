@@ -1,0 +1,108 @@
+{
+  "" : {
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Notes-master.dia",
+    "emit-module-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Notes-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Notes-master-emit-module.dia",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Notes-master.swiftdeps"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/Notes/ContentView.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/Notes/Models/Note.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Note.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Note.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Note.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Note.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Note.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Note.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Note.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/Note~partial.swiftmodule"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/Notes/NotesApp.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesApp.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesApp.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesApp.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesApp.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesApp.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesApp.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesApp.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesApp~partial.swiftmodule"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/Notes/Services/NotesStorageService.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesStorageService.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesStorageService.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesStorageService.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesStorageService.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesStorageService.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesStorageService.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesStorageService.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesStorageService~partial.swiftmodule"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/Notes/ViewModels/NotesViewModel.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesViewModel.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesViewModel.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesViewModel.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesViewModel.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesViewModel.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesViewModel.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesViewModel.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesViewModel~partial.swiftmodule"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/Notes/Views/AddNoteView.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/AddNoteView.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/AddNoteView.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/AddNoteView.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/AddNoteView.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/AddNoteView.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/AddNoteView.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/AddNoteView.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/AddNoteView~partial.swiftmodule"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/Notes/Views/EditNoteView.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/EditNoteView.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/EditNoteView.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/EditNoteView.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/EditNoteView.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/EditNoteView.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/EditNoteView.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/EditNoteView.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/EditNoteView~partial.swiftmodule"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/Notes/Views/NoteRowView.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NoteRowView.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NoteRowView.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NoteRowView.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NoteRowView.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NoteRowView.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NoteRowView.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NoteRowView.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NoteRowView~partial.swiftmodule"
+  },
+  "/Users/vietdh3.avi/Desktop/Notes/Notes/Views/NotesListView.swift" : {
+    "const-values" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesListView.swiftconstvalues",
+    "dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesListView.d",
+    "diagnostics" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesListView.dia",
+    "index-unit-output-path" : "/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesListView.o",
+    "llvm-bc" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesListView.bc",
+    "object" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesListView.o",
+    "swift-dependencies" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesListView.swiftdeps",
+    "swiftmodule" : "/Users/vietdh3.avi/Desktop/Notes/DerivedData/Build/Intermediates.noindex/Notes.build/Debug-iphonesimulator/Notes.build/Objects-normal/arm64/NotesListView~partial.swiftmodule"
+  }
+}
