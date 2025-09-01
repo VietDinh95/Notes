@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Target 'Notes' in project 'Notes'
+➜ Explicit dependency on target 'NotesKit' in project 'NotesKit'
+Target 'NotesKit' in project 'NotesKit'
+➜ Explicit dependency on target 'NotesKit' in project 'NotesKit'
+Target 'NotesKit' in project 'NotesKit' (no dependencies)

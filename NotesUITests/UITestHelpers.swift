@@ -1,54 +1,135 @@
-//
-//  UITestHelpers.swift
-//  NotesUITests
-//
-//  Created by Senior iOS Engineer on 31/8/25.
-//
+
 
 import XCTest
 
-// MARK: - Predicate-based Wait Helpers
+// MARK: - Enhanced XCUIElement Extensions
+
 extension XCUIElement {
+    
+    // MARK: - Existence & Visibility
+    
     @discardableResult
     func waitExists(timeout: TimeInterval = 4) -> Bool {
-        let p = NSPredicate(format: "exists == true")
-        let e = XCTNSPredicateExpectation(predicate: p, object: self)
-        return XCTWaiter().wait(for: [e], timeout: timeout) == .completed
+        let predicate = NSPredicate(format: "exists == true")
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
     }
     
     @discardableResult
     func waitHittable(timeout: TimeInterval = 4) -> Bool {
-        let p = NSPredicate(format: "exists == true && hittable == true")
-        let e = XCTNSPredicateExpectation(predicate: p, object: self)
-        return XCTWaiter().wait(for: [e], timeout: timeout) == .completed
+        let predicate = NSPredicate(format: "exists == true && hittable == true")
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
     }
     
     @discardableResult
     func waitEnabled(timeout: TimeInterval = 4) -> Bool {
-        let p = NSPredicate(format: "exists == true && enabled == true")
-        let e = XCTNSPredicateExpectation(predicate: p, object: self)
-        return XCTWaiter().wait(for: [e], timeout: timeout) == .completed
+        let predicate = NSPredicate(format: "exists == true && enabled == true")
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
     }
     
     @discardableResult
+    func waitVisible(timeout: TimeInterval = 4) -> Bool {
+        let predicate = NSPredicate(format: "exists == true && frame.size.width > 0 && frame.size.height > 0")
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
+    }
+    
+    // MARK: - Text & Content
+    
+    @discardableResult
     func waitForText(_ text: String, timeout: TimeInterval = 4) -> Bool {
-        let p = NSPredicate(format: "label CONTAINS %@", text)
-        let e = XCTNSPredicateExpectation(predicate: p, object: self)
-        return XCTWaiter().wait(for: [e], timeout: timeout) == .completed
+        let predicate = NSPredicate(format: "label CONTAINS %@ OR value CONTAINS %@", text, text)
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
+    }
+    
+    @discardableResult
+    func waitForTextToEqual(_ text: String, timeout: TimeInterval = 4) -> Bool {
+        let predicate = NSPredicate(format: "label == %@ OR value == %@", text, text)
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
+    }
+    
+    // MARK: - Actions with Predicate-based Waits
+    
+    func tapWhenHittable(timeout: TimeInterval = 4) {
+        if waitHittable(timeout: timeout) {
+            tap()
+        } else {
+            XCTFail("Element was not hittable within \(timeout) seconds")
+        }
+    }
+    
+    func typeTextWhenEnabled(_ text: String, timeout: TimeInterval = 4) {
+        if waitEnabled(timeout: timeout) {
+            tap()
+            typeText(text)
+        } else {
+            XCTFail("Element was not enabled within \(timeout) seconds")
+        }
+    }
+    
+    func clearAndTypeTextWhenEnabled(_ text: String, timeout: TimeInterval = 4) {
+        if waitEnabled(timeout: timeout) {
+            tap()
+            clearText()
+            typeText(text)
+        } else {
+            XCTFail("Element was not enabled within \(timeout) seconds")
+        }
+    }
+    
+    // MARK: - Text Field Operations
+    
+    func clearText() {
+        guard exists else { return }
+        
+        // Select all text
+        doubleTap()
+        
+        // Delete selected text
+        let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: 100)
+        typeText(deleteString)
+    }
+    
+    func selectAllText() {
+        guard exists else { return }
+        doubleTap()
     }
 }
 
+// MARK: - XCUIElementQuery Extensions
+
 extension XCUIElementQuery {
+    
+    @discardableResult
     func waitCount(_ expected: Int, timeout: TimeInterval = 4) -> Bool {
-        let p = NSPredicate(format: "count == %d", expected)
-        let e = XCTNSPredicateExpectation(predicate: p, object: self)
-        return XCTWaiter().wait(for: [e], timeout: timeout) == .completed
+        let predicate = NSPredicate(format: "count == %d", expected)
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
     }
     
+    @discardableResult
     func waitCountGreaterThan(_ minCount: Int, timeout: TimeInterval = 4) -> Bool {
-        let p = NSPredicate(format: "count > %d", minCount)
-        let e = XCTNSPredicateExpectation(predicate: p, object: self)
-        return XCTWaiter().wait(for: [e], timeout: timeout) == .completed
+        let predicate = NSPredicate(format: "count > %d", minCount)
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
+    }
+    
+    @discardableResult
+    func waitCountLessThan(_ maxCount: Int, timeout: TimeInterval = 4) -> Bool {
+        let predicate = NSPredicate(format: "count < %d", maxCount)
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
+    }
+    
+    @discardableResult
+    func waitForElementToExist(timeout: TimeInterval = 4) -> Bool {
+        let predicate = NSPredicate(format: "count > 0")
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
     }
 }
 
@@ -56,95 +137,8 @@ extension XCUIElementQuery {
 
 extension XCTestCase {
     
-    /// Wait for an element to exist with timeout
-    func waitForElementToExist(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
-        let expectation = XCTestExpectation(description: "Element exists")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if element.exists {
-                expectation.fulfill()
-            }
-        }
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: timeout)
-        return result == .completed
-    }
+    // MARK: - Screenshot Management
     
-    /// Wait for an element to not exist with timeout
-    func waitForElementToNotExist(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
-        let expectation = XCTestExpectation(description: "Element does not exist")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if !element.exists {
-                expectation.fulfill()
-            }
-        }
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: timeout)
-        return result == .completed
-    }
-    
-    /// Wait for an element to be hittable with timeout
-    func waitForElementToBeHittable(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
-        let expectation = XCTestExpectation(description: "Element is hittable")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if element.isHittable {
-                expectation.fulfill()
-            }
-        }
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: timeout)
-        return result == .completed
-    }
-    
-    /// Wait for text to appear with timeout
-    func waitForTextToAppear(_ text: String, in app: XCUIApplication, timeout: TimeInterval = 10.0) -> Bool {
-        let expectation = XCTestExpectation(description: "Text appears: \(text)")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if app.staticTexts[text].exists {
-                expectation.fulfill()
-            }
-        }
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: timeout)
-        return result == .completed
-    }
-    
-    /// Wait for app to be idle (no animations or loading)
-    func waitForAppToBeIdle(timeout: TimeInterval = 5.0) {
-        let expectation = XCTestExpectation(description: "App is idle")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + timeout) {
-            expectation.fulfill()
-        }
-        
-        _ = XCTWaiter.wait(for: [expectation], timeout: timeout + 1.0)
-    }
-    
-    /// Retry an action with exponential backoff
-    func retryAction<A>(_ action: () -> A, maxAttempts: Int = 3, initialDelay: TimeInterval = 0.5) -> A? {
-        var lastError: Error?
-        var delay = initialDelay
-        
-        for attempt in 1...maxAttempts {
-            do {
-                return action()
-            } catch {
-                lastError = error
-                if attempt < maxAttempts {
-                    Thread.sleep(forTimeInterval: delay)
-                    delay *= 2
-                }
-            }
-        }
-        
-        print("❌ Action failed after \(maxAttempts) attempts. Last error: \(String(describing: lastError))")
-        return nil
-    }
-    
-    /// Take a screenshot with a descriptive name
     func takeScreenshot(name: String) {
         let screenshot = XCUIScreen.main.screenshot()
         let attachment = XCTAttachment(screenshot: screenshot)
@@ -153,7 +147,6 @@ extension XCTestCase {
         add(attachment)
     }
     
-    /// Take a screenshot when test fails
     func takeScreenshotOnFailure() {
         addTeardownBlock { [weak self] in
             if let testCase = self, testCase.testRun?.hasSucceeded == false {
@@ -161,11 +154,50 @@ extension XCTestCase {
             }
         }
     }
+    
+    // MARK: - App State Management
+    
+    func waitForAppToBeIdle(timeout: TimeInterval = 2.0) {
+        // Wait for any ongoing animations or loading to complete
+        let expectation = XCTestExpectation(description: "App is idle")
+        
+        // Use a shorter timeout for idle state
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeout) {
+            expectation.fulfill()
+        }
+        
+        _ = XCTWaiter.wait(for: [expectation], timeout: timeout + 0.5)
+    }
+    
+    // MARK: - Performance Measurement
+    
+    func measureAppLaunch() {
+        measure(metrics: [XCTCPUMetric(), XCTMemoryMetric(), XCTStorageMetric()]) {
+            let app = XCUIApplication()
+            app.launchArguments = ["-UI_TESTS", "-ResetCoreData", "-UI_TESTS_DISABLE_ANIMATIONS"]
+            app.launch()
+            
+            // Wait for app to be ready
+            let navigationBar = app.navigationBars.firstMatch
+            _ = navigationBar.waitExists(timeout: 5)
+            
+            app.terminate()
+        }
+    }
+    
+    // MARK: - Retry Logic
+    
+    func retryAction<T>(_ action: () -> T, maxAttempts: Int = 3, initialDelay: TimeInterval = 0.5) -> T? {
+        for _ in 1...maxAttempts {
+            return action()
+        }
+        return nil
+    }
 }
 
-// MARK: - NotesAppPage
+// MARK: - Enhanced Page Object Base Class
 
-class NotesAppPage {
+class BasePage {
     let app: XCUIApplication
     let testCase: XCTestCase
     
@@ -173,6 +205,60 @@ class NotesAppPage {
         self.app = app
         self.testCase = testCase
     }
+    
+    // MARK: - Common Wait Methods
+    
+    func waitForElementToExist(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
+        return element.waitExists(timeout: timeout)
+    }
+    
+    func waitForElementToBeHittable(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
+        return element.waitHittable(timeout: timeout)
+    }
+    
+    func waitForElementToBeEnabled(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
+        return element.waitEnabled(timeout: timeout)
+    }
+    
+    func waitForTextToAppear(_ text: String, in element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
+        return element.waitForText(text, timeout: timeout)
+    }
+    
+    // MARK: - Common Actions
+    
+    func tapElement(_ element: XCUIElement, timeout: TimeInterval = 10.0) {
+        if element.waitHittable(timeout: timeout) {
+            element.tap()
+            testCase.waitForAppToBeIdle()
+        } else {
+            XCTFail("Element was not hittable within \(timeout) seconds")
+        }
+    }
+    
+    func typeTextInElement(_ element: XCUIElement, text: String, timeout: TimeInterval = 10.0) {
+        if element.waitEnabled(timeout: timeout) {
+            element.tap()
+            element.clearText()
+            element.typeText(text)
+            testCase.waitForAppToBeIdle()
+        } else {
+            XCTFail("Element was not enabled within \(timeout) seconds")
+        }
+    }
+    
+    // MARK: - Debug Helpers
+    
+    func debugElementExistence(_ elements: [(String, XCUIElement)]) {
+        print("🔍 Debug: Checking element existence...")
+        for (name, element) in elements {
+            print("\(name): \(element.exists ? "✅" : "❌")")
+        }
+    }
+}
+
+// MARK: - NotesAppPage (Enhanced)
+
+class NotesAppPage: BasePage {
     
     // MARK: - Navigation Elements
     
@@ -185,26 +271,15 @@ class NotesAppPage {
     }
     
     var searchBar: XCUIElement {
-        app.searchFields["searchBar"]
+        app.otherElements["searchBar"]
     }
     
     var searchField: XCUIElement {
-        app.searchFields["searchField"]
+        app.textFields["searchField"]
     }
     
     var clearSearchButton: XCUIElement {
         app.buttons["clearSearchButton"]
-    }
-    
-    // MARK: - Debug Helpers
-    
-    func debugElementExistence() {
-        print("🔍 Debug: Checking element existence...")
-        print("📱 App: \(app.exists ? "✅" : "❌")")
-        print("➕ Add Button: \(addNoteButton.exists ? "✅" : "❌")")
-        print("🔍 Search Bar: \(searchBar.exists ? "✅" : "❌")")
-        print("📋 Notes List: \(notesList.exists ? "✅" : "❌")")
-        print("📊 Empty State: \(emptyStateView.exists ? "✅" : "❌")")
     }
     
     // MARK: - List Elements
@@ -283,21 +358,23 @@ class NotesAppPage {
         deleteAlert.buttons["Cancel"]
     }
     
-    // MARK: - Actions
+    // MARK: - Actions (Enhanced with Predicate-based Waits)
     
     func tapAddNote() {
-        addNoteButton.tap()
-        testCase.waitForAppToBeIdle()
+        tapElement(addNoteButton)
     }
     
     func searchForText(_ text: String) {
-        searchField.tap()
-        searchField.typeText(text)
-        testCase.waitForAppToBeIdle()
+        if searchField.waitHittable(timeout: 4) {
+            searchField.tap()
+            searchField.clearText()
+            searchField.typeText(text)
+            testCase.waitForAppToBeIdle()
+        }
     }
     
     func clearSearch() {
-        if clearSearchButton.exists {
+        if clearSearchButton.waitHittable(timeout: 4) {
             clearSearchButton.tap()
             testCase.waitForAppToBeIdle()
         }
@@ -305,26 +382,24 @@ class NotesAppPage {
     
     func tapNote(withId noteId: String) {
         let row = noteRow(for: noteId)
-        if row.exists {
-            row.tap()
-            testCase.waitForAppToBeIdle()
-        }
+        tapElement(row)
     }
     
     func tapFirstNote() {
         let firstCell = notesList.cells.firstMatch
         if firstCell.waitExists(timeout: 4) {
-            firstCell.tap()
-            testCase.waitForAppToBeIdle()
+            tapElement(firstCell)
+        } else {
+            XCTFail("No note cells found to tap")
         }
     }
     
     func deleteNote(withId noteId: String) {
         let deleteButton = deleteNoteButton(for: noteId)
-        if deleteButton.exists {
+        if deleteButton.waitHittable(timeout: 4) {
             deleteButton.tap()
             
-            if deleteAlert.exists {
+            if deleteAlert.waitExists(timeout: 4) {
                 confirmDeleteButton.tap()
                 testCase.waitForAppToBeIdle()
             }
@@ -333,9 +408,9 @@ class NotesAppPage {
     
     func pullToRefresh() {
         let list = notesList
-        if list.exists {
+        if list.waitExists(timeout: 4) {
             let firstCell = list.cells.firstMatch
-            if firstCell.exists {
+            if firstCell.waitExists(timeout: 4) {
                 let startCoordinate = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
                 let endCoordinate = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
                 startCoordinate.press(forDuration: 0.5, thenDragTo: endCoordinate)
@@ -344,66 +419,64 @@ class NotesAppPage {
         }
     }
     
-    // MARK: - Wait Methods
+    // MARK: - Wait Methods (Enhanced)
     
     func waitForAppToLoad(timeout: TimeInterval = 5.0) {
-        // Use predicate-based wait for navigation bar
         _ = navigationBar.waitExists(timeout: timeout)
     }
     
     func waitForNoteToAppear(withId noteId: String, timeout: TimeInterval = 10.0) {
         let noteRow = self.noteRow(for: noteId)
-        _ = testCase.waitForElementToExist(noteRow, timeout: timeout)
+        _ = noteRow.waitExists(timeout: timeout)
     }
     
     func waitForNoteToDisappear(withId noteId: String, timeout: TimeInterval = 10.0) {
         let noteRow = self.noteRow(for: noteId)
-        _ = testCase.waitForElementToNotExist(noteRow, timeout: timeout)
+        let predicate = NSPredicate(format: "exists == false")
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: noteRow)
+        _ = XCTWaiter().wait(for: [expectation], timeout: timeout)
     }
     
     func waitForLoadingToComplete(timeout: TimeInterval = 10.0) {
         let loadingView = self.loadingView
         if loadingView.exists {
-            _ = testCase.waitForElementToNotExist(loadingView, timeout: timeout)
+            let predicate = NSPredicate(format: "exists == false")
+            let expectation = XCTNSPredicateExpectation(predicate: predicate, object: loadingView)
+            _ = XCTWaiter().wait(for: [expectation], timeout: timeout)
         }
     }
     
     func waitForSearchResults(timeout: TimeInterval = 5.0) {
         // Wait for search bar to be ready
         _ = searchBar.waitExists(timeout: timeout)
+        
+        // Wait for search results to load (either notes list or empty state)
+        let expectation = XCTestExpectation(description: "Search results loaded")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            expectation.fulfill()
+        }
+        
+        _ = XCTWaiter().wait(for: [expectation], timeout: timeout)
     }
     
-    func waitForAppToBeIdle(timeout: TimeInterval = 5.0) {
-        testCase.waitForAppToBeIdle(timeout: timeout)
-    }
+    // MARK: - Debug Helpers
     
-    // MARK: - Specific Wait Helpers
-    
-    func waitForElementToBeHittable(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
-        return testCase.waitForElementToBeHittable(element, timeout: timeout)
-    }
-    
-    func waitForElementToExist(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
-        return testCase.waitForElementToExist(element, timeout: timeout)
-    }
-    
-    func waitForElementToNotExist(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
-        return testCase.waitForElementToNotExist(element, timeout: timeout)
-    }
-    
-    func waitForTextToAppear(_ text: String, timeout: TimeInterval = 10.0) -> Bool {
-        return testCase.waitForTextToAppear(text, in: app, timeout: timeout)
+    func debugElementExistence() {
+        let elements: [(String, XCUIElement)] = [
+            ("📱 App", app),
+            ("➕ Add Button", addNoteButton),
+            ("🔍 Search Bar", searchBar),
+            ("📋 Notes List", notesList),
+            ("📊 Empty State", emptyStateView)
+        ]
+        debugElementExistence(elements)
     }
 }
 
-// MARK: - AddNotePage
+// MARK: - AddNotePage (Enhanced)
 
-class AddNotePage {
-    let app: XCUIApplication
-    
-    init(app: XCUIApplication) {
-        self.app = app
-    }
+class AddNotePage: BasePage {
     
     var navigationBar: XCUIElement {
         app.navigationBars.firstMatch
@@ -426,50 +499,22 @@ class AddNotePage {
     }
     
     func fillNote(title: String, content: String) {
-        // Use predicate-based waits
-        _ = titleTextField.waitHittable(timeout: 4)
-        titleTextField.tap()
-        titleTextField.clearAndTypeText(title)
-        
-        _ = contentTextEditor.waitHittable(timeout: 4)
-        contentTextEditor.tap()
-        contentTextEditor.clearAndTypeText(content)
+        typeTextInElement(titleTextField, text: title)
+        typeTextInElement(contentTextEditor, text: content)
     }
     
     func saveNote() {
-        _ = saveButton.waitHittable(timeout: 4)
-        saveButton.tap()
+        tapElement(saveButton)
     }
     
     func cancelNote() {
-        _ = cancelButton.waitHittable(timeout: 4)
-        cancelButton.tap()
-    }
-    
-    // MARK: - Wait Helpers
-    
-    private func waitForElementToBeHittable(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
-        let expectation = XCTestExpectation(description: "Element is hittable")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if element.isHittable {
-                expectation.fulfill()
-            }
-        }
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: timeout)
-        return result == .completed
+        tapElement(cancelButton)
     }
 }
 
-// MARK: - EditNotePage
+// MARK: - EditNotePage (Enhanced)
 
-class EditNotePage {
-    let app: XCUIApplication
-    
-    init(app: XCUIApplication) {
-        self.app = app
-    }
+class EditNotePage: BasePage {
     
     var navigationBar: XCUIElement {
         app.navigationBars.firstMatch
@@ -492,39 +537,16 @@ class EditNotePage {
     }
     
     func updateNote(title: String, content: String) {
-        // Use predicate-based waits
-        _ = titleTextField.waitHittable(timeout: 4)
-        titleTextField.tap()
-        titleTextField.clearAndTypeText(title)
-        
-        _ = contentTextEditor.waitHittable(timeout: 4)
-        contentTextEditor.tap()
-        contentTextEditor.clearAndTypeText(content)
+        typeTextInElement(titleTextField, text: title)
+        typeTextInElement(contentTextEditor, text: content)
     }
     
     func saveChanges() {
-        _ = saveButton.waitHittable(timeout: 4)
-        saveButton.tap()
+        tapElement(saveButton)
     }
     
     func cancelChanges() {
-        _ = cancelButton.waitHittable(timeout: 4)
-        cancelButton.tap()
-    }
-    
-    // MARK: - Wait Helpers
-    
-    private func waitForElementToBeHittable(_ element: XCUIElement, timeout: TimeInterval = 10.0) -> Bool {
-        let expectation = XCTestExpectation(description: "Element is hittable")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if element.isHittable {
-                expectation.fulfill()
-            }
-        }
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: timeout)
-        return result == .completed
+        tapElement(cancelButton)
     }
 }
 
@@ -534,21 +556,4 @@ struct TestNote {
     static let id = UUID().uuidString
     static let title = "Test Note Title"
     static let content = "This is a test note content for UI testing purposes."
-}
-
-// MARK: - XCUIElement Extensions
-
-extension XCUIElement {
-    
-    /// Clear text field and type new text
-    func clearAndTypeText(_ text: String) {
-        guard self.exists else { return }
-        
-        // Clear existing text
-        self.doubleTap()
-        self.press(forDuration: 0.5)
-        
-        // Type new text
-        self.typeText(text)
-    }
 }

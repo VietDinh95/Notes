@@ -5,6 +5,7 @@ struct NotesListView: View {
     @ObservedObject var viewModel: NotesViewModel
     @State private var showingAddNote = false
     @State private var selectedNote: NoteModel?
+    @State private var isSearchFocused: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -59,6 +60,10 @@ struct NotesListView: View {
                     .accessibilityIdentifier("errorBanner")
                 }
             }
+            .onTapGesture {
+                // End search editing when tapping outside
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
             .navigationTitle("Notes")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
@@ -99,6 +104,7 @@ struct NotesListView: View {
 
 struct SearchBar: View {
     @Binding var text: String
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         HStack {
@@ -107,6 +113,7 @@ struct SearchBar: View {
             
             TextField("Search notes...", text: $text)
                 .textFieldStyle(PlainTextFieldStyle())
+                .focused($isFocused)
                 .accessibilityIdentifier("searchField")
             
             if !text.isEmpty {

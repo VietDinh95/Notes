@@ -1,5 +1,5 @@
 {
-  "source": "/Users/vietdh3.avi/Desktop/Notes/Notes/Views/NotesListView.swift",
+  "source": "/Users/vietdh3.avi/Desktop/Notes/Notes/Presentation/Views/NotesListView.swift",
   "tables": {
     "Localizable": [
       {
@@ -7,47 +7,47 @@
         "key": "Notes",
         "location": {
           "startingColumn": 30,
-          "startingLine": 23
-        }
-      },
-      {
-        "comment": "",
-        "key": "Delete Note",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 38
-        }
-      },
-      {
-        "comment": "",
-        "key": "Delete",
-        "location": {
-          "startingColumn": 24,
-          "startingLine": 39
-        }
-      },
-      {
-        "comment": "",
-        "key": "Cancel",
-        "location": {
-          "startingColumn": 24,
-          "startingLine": 44
-        }
-      },
-      {
-        "comment": "",
-        "key": "Are you sure you want to delete this note? This action cannot be undone.",
-        "location": {
-          "startingColumn": 22,
-          "startingLine": 46
+          "startingLine": 62
         }
       },
       {
         "comment": "",
         "key": "Search notes...",
         "location": {
-          "startingColumn": 27,
-          "startingLine": 57
+          "startingColumn": 23,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "Clear",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 113
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Notes Yet",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 140
+        }
+      },
+      {
+        "comment": "",
+        "key": "Create your first note to get started",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Create First Note",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 151
         }
       },
       {
@@ -55,47 +55,39 @@
         "key": "Loading notes...",
         "location": {
           "startingColumn": 18,
-          "startingLine": 111
+          "startingLine": 171
         }
       },
       {
         "comment": "",
-        "key": "No Notes Yet",
+        "key": "Dismiss",
         "location": {
-          "startingColumn": 49,
-          "startingLine": 123
+          "startingColumn": 20,
+          "startingLine": 197
         }
       },
       {
         "comment": "",
         "key": "No Results Found",
         "location": {
-          "startingColumn": 66,
-          "startingLine": 123
+          "startingColumn": 18,
+          "startingLine": 224
         }
       },
       {
         "comment": "",
-        "key": "Tap the + button to create your first note",
+        "key": "No notes match \"%@\"",
         "location": {
-          "startingColumn": 49,
-          "startingLine": 128
+          "startingColumn": 18,
+          "startingLine": 230
         }
       },
       {
         "comment": "",
-        "key": "Try adjusting your search terms",
+        "key": "Clear Search",
         "location": {
-          "startingColumn": 96,
-          "startingLine": 128
-        }
-      },
-      {
-        "comment": "",
-        "key": "Create Note",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 138
+          "startingColumn": 20,
+          "startingLine": 235
         }
       }
     ]

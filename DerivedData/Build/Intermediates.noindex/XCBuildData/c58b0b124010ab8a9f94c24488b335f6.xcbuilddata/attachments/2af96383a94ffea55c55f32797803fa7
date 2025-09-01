@@ -1,0 +1,4 @@
+module NotesKit {
+header "NotesKit-Swift.h"
+export *
+}

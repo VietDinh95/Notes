@@ -33,11 +33,11 @@ final class NotesViewModel: ObservableObject {
     // MARK: - Setup
     
     private func setupBindings() {
-        // Debounced search
+        // Debounced search only - avoid race condition
         $searchText
             .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
             .sink { [weak self] query in
-                self?.searchNotes(query: query)
+                self?.applySearchFilter()  // Single source of truth for search
             }
             .store(in: &cancellables)
     }
@@ -48,6 +48,7 @@ final class NotesViewModel: ObservableObject {
     func loadNotes() {
         isLoading = true
         errorMessage = nil
+        isSearching = false  // Reset search state when loading notes
         
         notesKitIntegration.service.getAllNotes()
             .sink(
@@ -139,19 +140,23 @@ final class NotesViewModel: ObservableObject {
     
     /// Search notes
     func searchNotes(query: String) {
+        // This method is only called for non-empty queries
         isSearching = true
         errorMessage = nil
         
         notesKitIntegration.service.searchNotes(query: query)
             .sink(
                 receiveCompletion: { [weak self] completion in
-                    self?.isSearching = false
+                    // Only set isSearching = false on error, not on success
                     if case .failure(let error) = completion {
+                        self?.isSearching = false
                         self?.errorMessage = error.localizedDescription
                     }
+                    // On success, keep isSearching = true to show search state
                 },
                 receiveValue: { [weak self] searchResults in
                     self?.filteredNotes = searchResults
+                    // Keep isSearching = true even when no results found
                 }
             )
             .store(in: &cancellables)
@@ -160,6 +165,7 @@ final class NotesViewModel: ObservableObject {
     /// Clear search and reload all notes
     func clearSearch() {
         searchText = ""
+        isSearching = false  // Ensure isSearching is reset when clearing search
         loadNotes()
     }
     
@@ -209,8 +215,11 @@ final class NotesViewModel: ObservableObject {
     
     private func applySearchFilter() {
         if searchText.isEmpty {
+            // Handle empty search immediately
             filteredNotes = notes
+            isSearching = false  // Stop searching when no query
         } else {
+            // Handle non-empty search
             searchNotes(query: searchText)
         }
     }

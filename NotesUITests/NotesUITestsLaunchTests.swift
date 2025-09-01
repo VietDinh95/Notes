@@ -1,9 +1,4 @@
-//
-//  NotesUITestsLaunchTests.swift
-//  NotesUITests
-//
-//  Created by VietDH3.AVI on 31/8/25.
-//
+
 
 import XCTest
 
@@ -25,31 +20,21 @@ class NotesUITestsLaunchTests: XCTestCase {
     }
     
     func testLaunch() throws {
-        // Configure app for launch testing
+        // Configure app for launch testing with performance optimizations
         let app = XCUIApplication()
-        app.launchArguments = [
-            "-UI_TESTS",
-            "-ResetCoreData",
-            "-UI_TESTS_DISABLE_ANIMATIONS"
-        ]
+        UITestConfiguration.configureAppForUITesting(app)
         
         // Launch the app
         app.launch()
         
-        // Wait for app to fully launch
-        let expectation = XCTestExpectation(description: "App launched successfully")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            expectation.fulfill()
-        }
-        
-        _ = XCTWaiter.wait(for: [expectation], timeout: 5.0)
+        // Wait for app to fully launch using predicate-based wait
+        let navigationBar = app.navigationBars.firstMatch
+        XCTAssertTrue(navigationBar.waitExists(timeout: UITestConfiguration.Timeouts.long), "Navigation bar should exist after launch")
         
         // Verify app launched successfully
         XCTAssertTrue(app.exists, "App should exist after launch")
         
         // Verify basic UI elements are present
-        let navigationBar = app.navigationBars.firstMatch
         XCTAssertTrue(navigationBar.exists, "Navigation bar should exist after launch")
         
         // Verify app is responsive
@@ -60,5 +45,21 @@ class NotesUITestsLaunchTests: XCTestCase {
         
         // Terminate app
         app.terminate()
+    }
+    
+    func testLaunchPerformance() throws {
+        // Measure launch performance
+        measure(metrics: UITestConfiguration.performanceMetrics) {
+            let app = XCUIApplication()
+            UITestConfiguration.configureAppForPerformanceTesting(app)
+            
+            app.launch()
+            
+            // Wait for app to be ready
+            let navigationBar = app.navigationBars.firstMatch
+            _ = navigationBar.waitExists(timeout: UITestConfiguration.Timeouts.long)
+            
+            app.terminate()
+        }
     }
 }

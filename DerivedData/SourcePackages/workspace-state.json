@@ -1,0 +1,24 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "noteskit",
+          "kind" : "fileSystem",
+          "location" : "/Users/vietdh3.avi/Desktop/Notes/NotesKit",
+          "name" : "NotesKit"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/vietdh3.avi/Desktop/Notes/NotesKit"
+        },
+        "subpath" : "noteskit"
+      }
+    ]
+  },
+  "version" : 6
+}

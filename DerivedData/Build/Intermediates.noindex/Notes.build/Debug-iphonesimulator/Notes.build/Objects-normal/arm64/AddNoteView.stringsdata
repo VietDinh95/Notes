@@ -1,5 +1,5 @@
 {
-  "source": "/Users/vietdh3.avi/Desktop/Notes/Notes/Views/AddNoteView.swift",
+  "source": "/Users/vietdh3.avi/Desktop/Notes/Notes/Presentation/Views/AddNoteView.swift",
   "tables": {
     "Localizable": [
       {
@@ -7,7 +7,7 @@
         "key": "New Note",
         "location": {
           "startingColumn": 30,
-          "startingLine": 66
+          "startingLine": 43
         }
       },
       {
@@ -15,15 +15,15 @@
         "key": "Title",
         "location": {
           "startingColumn": 26,
-          "startingLine": 16
+          "startingLine": 17
         }
       },
       {
         "comment": "",
-        "key": "Enter note title",
+        "key": "Enter title",
         "location": {
           "startingColumn": 31,
-          "startingLine": 20
+          "startingLine": 21
         }
       },
       {
@@ -31,15 +31,7 @@
         "key": "Content",
         "location": {
           "startingColumn": 26,
-          "startingLine": 29
-        }
-      },
-      {
-        "comment": "",
-        "key": "Save Note",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 51
+          "startingLine": 28
         }
       },
       {
@@ -47,7 +39,15 @@
         "key": "Cancel",
         "location": {
           "startingColumn": 28,
-          "startingLine": 70
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 54
         }
       }
     ]

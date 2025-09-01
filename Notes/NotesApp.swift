@@ -1,9 +1,4 @@
-//
-//  NotesApp.swift
-//  Notes
-//
-//  Created by VietDH3.AVI on 31/8/25.
-//
+
 
 import SwiftUI
 import CoreData
@@ -22,12 +17,27 @@ struct NotesApp: App {
             }
             
             // Disable animations for UI tests
-            if ProcessInfo.processInfo.arguments.contains("-UI_TESTS_DISABLE_ANIMATIONS") {
+            if ProcessInfo.processInfo.arguments.contains("-UI_TESTS_DISABLE_ANIMATIONS") ||
+               ProcessInfo.processInfo.arguments.contains("-disableAnimations") {
                 UIView.setAnimationsEnabled(false)
             }
             
             // Use in-memory store for UI tests
             CoreDataStack.shared.useInMemoryStore()
+            
+            // Additional performance optimizations for UI tests
+            if ProcessInfo.processInfo.arguments.contains("-uiTestFastMode") {
+                // Disable system animations
+                UIView.setAnimationsEnabled(false)
+                
+                // Reduce animation duration
+                UIView.animate(withDuration: 0.0) {
+                    // This effectively disables animations
+                }
+                
+                // Disable haptic feedback for UI tests
+                // Note: This is handled automatically by XCTest
+            }
         }
     }
     

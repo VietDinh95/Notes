@@ -280,6 +280,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreData;
 #endif
 
 #endif
@@ -301,6 +302,27 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+@class NSEntityDescription;
+@class NSManagedObjectContext;
+
+SWIFT_CLASS_NAMED("Note")
+@interface Note : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@class NSString;
+@class NSDate;
+@class NSUUID;
+
+@interface Note (SWIFT_EXTENSION(Notes))
+@property (nonatomic, copy) NSString * _Nullable content;
+@property (nonatomic, copy) NSDate * _Nullable createdAt;
+@property (nonatomic, copy) NSUUID * _Nullable id;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSDate * _Nullable updatedAt;
+@end
+
 
 
 
