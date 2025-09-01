@@ -8,8 +8,9 @@ struct EditNoteView: View {
     
     @State private var title: String
     @State private var content: String
-    @State private var noteId: UUID
-    @State private var animationManager = AnimatedStateManager()
+    @StateObject private var animationManager = AnimatedStateManager()
+    @FocusState private var isTitleFocused: Bool
+    @FocusState private var isContentFocused: Bool
     
     // Computed property to check if note has been modified
     private var hasChanges: Bool {
@@ -21,11 +22,10 @@ struct EditNoteView: View {
         self.viewModel = viewModel
         self._title = State(initialValue: note.title)
         self._content = State(initialValue: note.content)
-        self._noteId = State(initialValue: note.id)
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 20) {
                 // Title Field
                 VStack(alignment: .leading, spacing: 8) {
@@ -35,6 +35,10 @@ struct EditNoteView: View {
                     
                     TextField("Enter title", text: $title)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .focused($isTitleFocused)
+                        .textInputAutocapitalization(.sentences)
+                        .disableAutocorrection(true)
+                        .textContentType(.none)
                         .accessibilityIdentifier("editNoteTitleField")
                 }
                 
@@ -44,12 +48,27 @@ struct EditNoteView: View {
                         .font(.headline)
                         .foregroundColor(.primary)
                     
-                    TextEditor(text: $content)
-                        .frame(minHeight: 200)
-                        .padding(8)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(8)
-                        .accessibilityIdentifier("editNoteContentField")
+                    ZStack(alignment: .topLeading) {
+                        TextEditor(text: $content)
+                            .frame(minHeight: 200)
+                            .padding(8)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(8)
+                            .focused($isContentFocused)
+                            .textInputAutocapitalization(.sentences)
+                            .disableAutocorrection(true)
+                            .textContentType(.none)
+                            .accessibilityIdentifier("editNoteContentField")
+                        
+                        // Placeholder for TextEditor
+                        if content.isEmpty {
+                            Text("Enter note content...")
+                                .foregroundColor(.secondary)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 16)
+                                .allowsHitTesting(false)
+                        }
+                    }
                 }
                 
                 Spacer()
@@ -86,23 +105,42 @@ struct EditNoteView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        saveNote()
+                        Task {
+                            await saveNote()
+                        }
                     }
                     .disabled(!hasChanges || title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                     .foregroundColor(hasChanges ? .blue : .gray)
                     .accessibilityIdentifier("editNoteSaveButton")
                 }
+                
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        // Resign focus safely
+                        isTitleFocused = false
+                        isContentFocused = false
+                    }
+                }
             }
         }
-        .onAppear {
-            animationManager.show()
+        .task {
+            await MainActor.run {
+                animationManager.show()
+            }
+        }
+        .onDisappear {
+            // Clear focus when view disappears
+            isTitleFocused = false
+            isContentFocused = false
         }
     }
     
-    private func saveNote() {
-        // Create updated note model
+    @MainActor
+    private func saveNote() async {
+        // Create updated note model using original note.id
         let updatedNote = NoteModel(
-            id: noteId,
+            id: note.id,
             title: title,
             content: content,
             createdAt: note.createdAt,

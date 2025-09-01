@@ -2,6 +2,21 @@
 
 This document outlines the content requirements for the Notes App demo video/GIF to showcase the application's features and capabilities.
 
+## 🎥 Demo Video
+
+**[📱 Watch Demo Video]( https://drive.google.com/file/d/1ewKiXkoFr73iZH4WhfwnPfQO9RU37ecZ/view?usp=sharing)**
+
+*Click the link above to view the complete demo showcasing all features of the Notes App*
+
+**File Location**: [Google Drive](https://drive.google.com/file/d/1ewKiXkoFr73iZH4WhfwnPfQO9RU37ecZ/view?usp=sharing) (external hosting)
+
+### Demo Highlights
+- **App Launch & Navigation**: Smooth startup and interface transitions
+- **CRUD Operations**: Create, Read, Update, Delete notes with validation
+- **Search Functionality**: Real-time filtering with debounced input
+- **UI/UX Excellence**: Modern SwiftUI components and animations
+- **Technical Architecture**: MVVM + NotesKit framework integration
+
 ## 📋 Demo Content Requirements
 
 ### 1. App Launch & Initial State
@@ -186,6 +201,25 @@ xcrun simctl io booted recordVideo demo.mp4
 - [ ] Performance optimizations highlighted
 - [ ] Modern iOS development practices shown
 
+## 📤 Video Hosting Information
+
+### Demo Video Status
+✅ **Demo video completed and uploaded to Google Drive**
+
+### Video Details
+- **Platform**: Google Drive
+- **Link**: [https://drive.google.com/file/d/1ewKiXkoFr73iZH4WhfwnPfQO9RU37ecZ/view?usp=sharing](https://drive.google.com/file/d/1ewKiXkoFr73iZH4WhfwnPfQO9RU37ecZ/view?usp=sharing)
+- **Access**: Public sharing enabled
+- **Status**: Ready for review
+
+### Alternative Access
+If the Google Drive link is not accessible, the video can be:
+- Downloaded and shared via other platforms
+- Embedded in project documentation
+- Included in project submission materials
+
 ---
 
 **Note**: This showcase will be used to demonstrate the technical excellence, user experience, and architectural decisions made in the Notes App project.
+
+**Demo Video Status**: ✅ *Completed and available at [Google Drive](https://drive.google.com/file/d/1ewKiXkoFr73iZH4WhfwnPfQO9RU37ecZ/view?usp=sharing)*

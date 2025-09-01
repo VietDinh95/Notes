@@ -47,6 +47,7 @@ struct NoteRowView: View {
                 }
                 .accessibilityIdentifier("btnDeleteNote_\(note.id.uuidString)")
                 .buttonStyle(PlainButtonStyle())
+                .allowsHitTesting(true)
             }
         }
         .padding(.vertical, 4)
@@ -54,10 +55,10 @@ struct NoteRowView: View {
             Rectangle()
                 .fill(Color.clear)
                 .contentShape(Rectangle())
-                .onTapGesture {
-                    onTap()
-                }
         )
+        .onTapGesture {
+            onTap()
+        }
         .accessibilityIdentifier("noteRow_\(note.id.uuidString)")
         .confirmationDialog(
             "Delete Note",

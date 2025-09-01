@@ -11,11 +11,8 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView {
-            NotesListView(viewModel: viewModel)
-                .environmentObject(notesKitIntegration)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+        NotesListView(viewModel: viewModel)
+            .environmentObject(notesKitIntegration)
     }
 }
 

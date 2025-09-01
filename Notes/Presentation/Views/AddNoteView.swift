@@ -7,10 +7,12 @@ struct AddNoteView: View {
     
     @State private var title = ""
     @State private var content = ""
-    @State private var animationManager = AnimatedStateManager()
+    @StateObject private var animationManager = AnimatedStateManager()
+    @FocusState private var isTitleFocused: Bool
+    @FocusState private var isContentFocused: Bool
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 20) {
                 // Title Field
                 VStack(alignment: .leading, spacing: 8) {
@@ -20,7 +22,12 @@ struct AddNoteView: View {
                     
                     TextField("Enter title", text: $title)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .focused($isTitleFocused)
                         .accessibilityIdentifier("addNoteTitleField")
+                        .submitLabel(.next)
+                        .onSubmit {
+                            isContentFocused = true
+                        }
                 }
                 
                 // Content Field
@@ -29,12 +36,25 @@ struct AddNoteView: View {
                         .font(.headline)
                         .foregroundColor(.primary)
                     
-                    TextEditor(text: $content)
-                        .frame(minHeight: 200)
-                        .padding(8)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(8)
-                        .accessibilityIdentifier("addNoteContentField")
+                    ZStack(alignment: .topLeading) {
+                        TextEditor(text: $content)
+                            .frame(minHeight: 200)
+                            .padding(8)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(8)
+                            .focused($isContentFocused)
+                            .accessibilityIdentifier("addNoteContentField")
+                            .submitLabel(.done)
+                        
+                        // Placeholder for TextEditor
+                        if content.isEmpty {
+                            Text("Enter note content...")
+                                .foregroundColor(.secondary)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 16)
+                                .allowsHitTesting(false)
+                        }
+                    }
                 }
                 
                 Spacer()
@@ -42,6 +62,15 @@ struct AddNoteView: View {
             .padding()
             .navigationTitle("New Note")
             .navigationBarTitleDisplayMode(.inline)
+            .background(
+                Color.clear
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        // Dismiss keyboard when tapping outside
+                        isTitleFocused = false
+                        isContentFocused = false
+                    }
+            )
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
@@ -52,19 +81,30 @@ struct AddNoteView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        saveNote()
+                        Task {
+                            await saveNote()
+                        }
                     }
                     .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                     .accessibilityIdentifier("addNoteSaveButton")
                 }
             }
         }
-        .onAppear {
-            animationManager.show()
+        .task {
+            await MainActor.run {
+                animationManager.show()
+                isTitleFocused = true
+            }
+        }
+        .onDisappear {
+            // Clear focus when view disappears
+            isTitleFocused = false
+            isContentFocused = false
         }
     }
     
-    private func saveNote() {
+    @MainActor
+    private func saveNote() async {
         // Create the note through the view model
         viewModel.createNote(title: title, content: content)
         
